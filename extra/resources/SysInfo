@@ -4,7 +4,7 @@
 #	SysInfo OCF Resource Agent
 #	It records (in the CIB) various attributes of a node
 #
-# Copyright (c) 2004 SUSE LINUX AG, Lars Marowsky-Brée
+# Copyright (c) 2004 SUSE LINUX AG, Lars Marowsky-BrÃ©e
 #                    All Rights Reserved.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -258,6 +258,7 @@ SysInfo_megabytes() {
 		     sub(/[0-9]+(.[0-9]+)?/, "");
 		     split(n, a, $0);
                      n=a[1];
+                     if ($0 == "T") { n *= 1048576 };		    
                      if ($0 == "G" || $0 == "") { n *= 1024 };
                      if (/^kB?/) { n /= 1024 };
                      printf "%d\n", n }' # Intentionally round to an integer
